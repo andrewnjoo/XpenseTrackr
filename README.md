@@ -64,3 +64,9 @@ new rails
 ````
 rails new blog --database=postgresql
 ```
+
+check env
+```
+Rails c
+Rails.env
+```
