@@ -70,3 +70,8 @@ check env
 Rails c
 Rails.env
 ```
+
+run different env server
+```
+rails server -e development
+```
