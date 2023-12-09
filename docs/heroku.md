@@ -16,4 +16,6 @@ heroku apps
 tailwind
 ```
 heroku rake assets:precompile
+
+heroku rake assets:clean assets:precompile
 ```
