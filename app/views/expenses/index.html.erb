@@ -4,7 +4,7 @@
       <div class="bg-green-200 text-green-800 rounded-md p-4 mb-4"> Welcome <%= current_user.email %> </div>
       <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "text-red-500 border-2 border-black p-2 rounded-lg" %>
     <% else %>
-      <%= button_to "Sign in", new_user_session_path, class: "text-green-500 border-2 border-black p-2 rounded-lg" %>
+      <%= link_to "Sign in", new_user_session_path, class: "text-blue-500 border-2 border-blue-500 p-2 rounded-lg hover:border-blue-700 transition shadow-md" %>
     <% end %>
   </div>
   <h1 class="text-3xl font-semibold mb-4">Expenses</h1>
