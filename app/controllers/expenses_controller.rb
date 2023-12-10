@@ -1,6 +1,8 @@
 class ExpensesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
-    @expenses = Expense.order(date: :desc)
+    @expenses = user_signed_in? ? current_user.expenses.order(date: :desc) : Expense.none
   end
 
   def new
@@ -8,7 +10,8 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    @expense = Expense.new(expense_params)
+    # @expense = Expense.new(expense_params)
+    @expense = current_user.expenses.new(expense_params)
 
     if @expense.save
       redirect_to expenses_path, notice: "Expense was successfully created."
@@ -45,6 +48,6 @@ class ExpensesController < ApplicationController
   private
 
   def expense_params
-    params.require(:expense).permit(:title, :amount, :date)
+    params.require(:expense).permit(:title, :amount, :date, :user_id)
   end
 end
