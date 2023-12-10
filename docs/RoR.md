@@ -68,3 +68,12 @@ run different env server
 ```
 rails server -e development
 ```
+
+---
+
+## devise
+
+generate views
+```
+rails generate devise:views
+```
