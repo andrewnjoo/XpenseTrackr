@@ -1,11 +1,13 @@
-<!-- app/views/layouts/_navbar.html.erb -->
-
 <nav class="bg-blue-500 p-4">
   <div class="container mx-auto flex justify-between items-center">
-    <div class="text-white text-2xl font-bold">Xpensetrackr</div>
+    <div class="text-white text-2xl font-bold"><%= link_to "Xpensetrackr", root_path %></div>
     <ul class="flex space-x-4">
-      <li><a href="/" class="text-white hover:underline">Home</a></li>
-      <li><a href="/about" class="text-white hover:underline">About</a></li>
+      <li>
+        <%= link_to "Home", root_path, class: "text-white hover:underline" %>
+      </li>
+      <li>
+        <%= link_to "About", about_path, class: "text-white hover:underline" %>
+      </li>
       <!--TODO: <li><a href="/pricing" class="text-white hover:underline">Services</a></li> -->
     </ul>
   </div>
