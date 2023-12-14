@@ -1,12 +1,12 @@
 <footer class="bg-blue-500 py-6 px-4 text-white">
   <div class="container mx-auto flex justify-between items-center">
-    <div class="text-md font-bold">Xpensetrackr</div>
-    <ul class="flex space-x-4">
+    <div class="text-md font-bold"><%= link_to "XpenseTrackr", root_path %></div>
+    <ul class="flex flex-col sm:flex-row items-start sm:space-x-4">
       <li>
-        <a href="/tos" class="hover:underline">Terms of Service</a>
+        <%= link_to "Terms of Service", tos_path, class: "hover:underline" %>
       </li>
       <li>
-        <a href="/privacy" class="hover:underline">Privacy Policy</a>
+        <%= link_to "Privacy Policy", privacy_path, class: "hover:underline" %>
       </li>
       <li>
        <a href="https://xpensetrackr.canny.io" target="_blank" class="hover:underline">Feedback</a>
