@@ -1,14 +1,9 @@
 <div class="max-w-md mx-auto mt-8">
   <h1 class="text-3xl font-semibold mb-4">Edit Expense</h1>
   <%= form_with(model: @expense, local: true) do |form| %>
-    <% if @expense.errors.any? %>
-      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 mb-4 rounded">
-        <h2 class="font-semibold"><%= pluralize(@expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
-        <ul>
-          <% @expense.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+    <% if flash[:error] %>
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+        <span class="block sm:inline"><%= flash[:error] %></span>
       </div>
     <% end %>
     <div class="mb-4">
@@ -26,6 +21,10 @@
     <div class="mb-4">
       <%= form.label :description, class: "block text-gray-700 text-sm font-bold mb-2" %>
       <%= form.text_field :description, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" %>
+    </div>
+    <div class="mb-4">
+      <%= form.label :category, class: "block text-gray-700 text-sm font-bold mb-2" %>
+      <%= form.select :category, ExpenseConstants::CATEGORIES, {}, { class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" } %>
     </div>
     <div class="mb-6">
       <%= form.submit "Update Expense", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>

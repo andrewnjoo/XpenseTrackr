@@ -9,6 +9,12 @@ db setup
 rake db:setup
 ```
 
+CAREFUL - drops table and rollback
+
+```
+rake db:rollback
+```
+
 migrate
 
 ```

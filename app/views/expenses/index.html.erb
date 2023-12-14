@@ -17,21 +17,30 @@
           <th class="border border-gray-300 py-2 px-4">Amount</th>
           <th class="border border-gray-300 py-2 px-4">Date</th>
           <th class="border border-gray-300 py-2 px-4">Description</th>
-          <th class="border border-gray-300 py-2 px-4" colspan="3"></th>
+          <th class="border border-gray-300 py-2 px-4">Category</th>
+          <th class="border border-gray-300 py-2 px-4" colspan="3">Actions</th>
         </tr>
       </thead>
       <tbody>
+        <% total_expenses = 0 %>
         <% @expenses.each do |expense| %>
           <tr class="border border-gray-300">
             <td class="border border-gray-300 py-2 px-4"><%= expense.title %></td>
             <td class="border border-gray-300 py-2 px-4"><%= number_to_currency(expense.amount) %></td>
             <td class="border border-gray-300 py-2 px-4"><%= expense.date %></td>
             <td class="border border-gray-300 py-2 px-4"><%= expense.description %></td>
+            <td class="border border-gray-300 py-2 px-4"><%= expense.category %></td>
             <td class="border border-gray-300 py-2 px-4"><%= link_to 'Show', expense, class: "text-blue-500 hover:text-blue-700" %></td>
             <td class="border border-gray-300 py-2 px-4"><%= link_to 'Edit', edit_expense_path(expense), class: "text-yellow-500 hover:text-yellow-700" %></td>
-            <td class="border border-gray-300 py-2 px-4"><%= link_to 'Delete', expense, method: :delete, data: { "turbo-method": :delete }, class: "text-red-500 hover:text-red-700" %></td>
+            <td class="border border-gray-300 py-2 px-4"><%= link_to 'Delete', expense, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "text-red-500 hover:text-red-700" %></td>
           </tr>
+          <% total_expenses += expense.amount %>
         <% end %>
+        <!-- Display Total -->
+        <tr class="border border-gray-300">
+          <td class="border border-gray-300 py-2 px-4" colspan="5"><strong>Total:</strong></td>
+          <td class="border border-gray-300 py-2 px-4" colspan="3"><%= number_to_currency(total_expenses) %></td>
+        </tr>
       </tbody>
     </table>
   </div>

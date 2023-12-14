@@ -1,4 +1,7 @@
+require_relative "../constants/expense_constants"
+
 class ExpensesController < ApplicationController
+  include ExpenseConstants
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -6,7 +9,7 @@ class ExpensesController < ApplicationController
   end
 
   def new
-    @expense = Expense.new
+    @expense = current_user.expenses.new(session.delete(:expense_form_data) || {})
   end
 
   def create
@@ -15,7 +18,12 @@ class ExpensesController < ApplicationController
     if @expense.save
       redirect_to expenses_path, notice: "Expense was successfully created."
     else
-      render :new
+      # puts @expense.errors.full_messages
+      flash[:error] = @expense.errors.full_messages.join(", ")
+
+      # render :new
+      session[:expense_form_data] = expense_params
+      redirect_to new_expense_path
     end
   end
 
@@ -31,9 +39,12 @@ class ExpensesController < ApplicationController
     @expense = Expense.find(params[:id])
 
     if @expense.update(expense_params)
-      redirect_to expenses_path, notice: 'Expense was successfully updated.'
+      redirect_to expenses_path, notice: "Expense was successfully updated."
     else
-      render :edit
+      flash[:error] = @expense.errors.full_messages.join(", ")
+
+      session[:expense_form_data] = expense_params
+      redirect_to edit_expense_path(@expense)
     end
   end
 
@@ -41,12 +52,12 @@ class ExpensesController < ApplicationController
     @expense = Expense.find(params[:id])
     @expense.destroy
 
-    redirect_to expenses_path, notice: 'Expense was successfully deleted.'
+    redirect_to expenses_path, notice: "Expense was successfully deleted."
   end
 
   private
 
   def expense_params
-    params.require(:expense).permit(:title, :amount, :date, :description, :user_id)
+    params.require(:expense).permit(:title, :amount, :date, :description, :category, :user_id)
   end
 end
