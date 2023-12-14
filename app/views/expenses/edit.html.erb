@@ -24,7 +24,7 @@
     </div>
     <div class="mb-4">
       <%= form.label :category, class: "block text-gray-700 text-sm font-bold mb-2" %>
-      <%= form.select :category, ExpenseConstants::CATEGORIES, {}, { class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" } %>
+      <%= form.select :category, ExpenseConstants::CATEGORIES, { include_blank: true }, { class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight" } %>
     </div>
     <div class="mb-6">
       <%= form.submit "Update Expense", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
