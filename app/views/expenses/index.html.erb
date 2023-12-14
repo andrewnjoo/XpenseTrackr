@@ -1,4 +1,4 @@
-<div class="mx-auto max-w-3xl mt-8 flex justify-center flex-col">
+<div class="mt-8">
   <div class="my-4">
     <% if user_signed_in? %>
       <div class="bg-green-200 text-green-800 rounded-md p-4 mb-4"> Welcome <%= current_user.email %> </div>
@@ -9,8 +9,8 @@
   </div>
   <h1 class="text-3xl font-semibold mb-4">Expenses</h1>
   <%= link_to 'New Expense', new_expense_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
-  <div class='overflow-x-auto'>
-    <table class="mt-4 w-full border-collapse border border-gray-300">
+  <div class="mt-4 overflow-x-auto">
+    <table class="border-collapse border border-gray-300">
       <thead>
         <tr class="bg-gray-200">
           <th class="border border-gray-300 py-2 px-4">Title</th>
