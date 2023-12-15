@@ -5,7 +5,7 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @expenses = user_signed_in? ? current_user.expenses.order(date: :desc) : Expense.none
+    @expenses = user_signed_in? ? current_user.expenses.order(date: :desc, created_at: :desc) : Expense.none
   end
 
   def new
