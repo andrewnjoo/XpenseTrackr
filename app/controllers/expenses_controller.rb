@@ -5,7 +5,7 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @expenses = user_signed_in? ? current_user.expenses.order(date: :desc, created_at: :desc) : Expense.none
+    @expenses = user_signed_in? ? current_user.expenses.order(datetime: :desc, created_at: :desc) : Expense.none
   end
 
   def new
@@ -58,6 +58,6 @@ class ExpensesController < ApplicationController
   private
 
   def expense_params
-    params.require(:expense).permit(:title, :amount, :date, :description, :category, :user_id)
+    params.require(:expense).permit(:title, :amount, :datetime, :description, :category, :user_id)
   end
 end

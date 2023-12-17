@@ -3,7 +3,7 @@ class CreateExpenses < ActiveRecord::Migration[7.1]
     create_table :expenses do |t|
       t.string :title
       t.decimal :amount
-      t.date :date
+      t.datetime :datetime
       t.string :description
       t.string :category
       t.references :user, null: false, foreign_key: true
