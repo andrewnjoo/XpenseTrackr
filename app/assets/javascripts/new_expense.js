@@ -5,9 +5,13 @@
  */
 document.addEventListener("DOMContentLoaded", function () {
   const datetimeField = document.querySelector("input[type=datetime-local]");
+  const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  console.log('userTimezone', userTimezone);
 
   if (datetimeField) {
     const now = new Date(); // Get the current date and time
+    console.log(now);
     const year = now.getFullYear();
     const month = `${(now.getMonth() + 1)}`.padStart(2, "0"); // Month starts from 0
     const day = `${now.getDate()}`.padStart(2, "0");
