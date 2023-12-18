@@ -4,13 +4,9 @@
  * Updates the datetime input field to display the current time in the user's timezone on page load.
  */
 document.addEventListener("DOMContentLoaded", function () {
-  const timezoneInput = document.getElementById("user_timezone");
   const datetimeField = document.querySelector("input[type=datetime-local]");
 
-  if (timezoneInput && datetimeField) {
-    const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    timezoneInput.value = userTimezone;
-  
+  if (datetimeField) {
     const now = new Date(); // Get the current date and time
     const year = now.getFullYear();
     const month = `${(now.getMonth() + 1)}`.padStart(2, "0"); // Month starts from 0
