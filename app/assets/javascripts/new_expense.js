@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     timezoneInput.value = userTimezone;
 
-    const now = new Date().toLocaleString("en-US", { timeZone: userTimezone });
-    datetimeField.value = now.slice(0, -3); // Removing seconds for datetime-local input
+    const now = new Date().toISOString({ timeZone: userTimezone }).slice(0, 16);
+    datetimeField.value = now;
   }
 });
