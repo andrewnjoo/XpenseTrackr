@@ -10,9 +10,9 @@
     <%= javascript_importmap_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
-  <body>
+  <body class="bg-gradient-to-b from-white to-gray-200">
     <%= render "layouts/navbar" %>
-    <main class="container mx-auto sm:mt-12 px-5 min-h-screen">
+    <main class="container mx-auto mt-12 px-5 min-h-screen flex flex-col">
       <p class="notice mx-auto"><%= notice %></p>
       <p class="alert mx-auto"><%= alert %></p>
       <%= yield %>

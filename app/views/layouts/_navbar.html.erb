@@ -1,14 +1,24 @@
-<nav class="bg-gray-800 p-4">
-  <div class="container mx-auto flex justify-between items-center">
-    <div class="text-white text-2xl font-bold"><%= link_to "XT", root_path %></div>
-    <ul class="flex space-x-4">
-      <li>
-        <%= link_to "Home", root_path, class: "text-white hover:underline" %>
-      </li>
-      <li>
-        <%= link_to "About", about_path, class: "text-white hover:underline" %>
-      </li>
-      <!--TODO: <li><a href="/pricing" class="text-white hover:underline">Services</a></li> -->
-    </ul>
+<header
+  class="bg-gray-800 sm:flex sm:justify-between sm:px-4 sm:py-1 sm:items-center"
+  data-controller="navbar" data-navbar-state-value="false">
+  <div class="flex justify-between p-4 sm:p-0 items-center">
+    <a class="font-bold text-xl font-mono text-gray-200 hover:text-gray-400 transition" href="/">
+      <span class="text-gray-400">X</span>T
+    </a>
+    <div class="sm:hidden">
+      <button class="text-gray-400 focus:text-white focus:outline-none hover:text-white block"
+        type="button"
+        data-action="click->navbar#toggle" >
+        <span class="sr-only">Open main menu</span>
+        <svg class="h-8 w-8 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+          <path data-navbar-target="x"    stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" class="hidden" />
+          <path data-navbar-target="bars" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
   </div>
-</nav>
+  <div class="hidden sm:flex px-2 py-3" data-navbar-target="menu">
+    <a href="/" class="block text-gray-200 font-semibold hover:bg-gray-600 rounded px-2 py-1 transition">Home</a>
+    <a href="/about" class="block text-gray-200 font-semibold hover:bg-gray-600 rounded px-2 py-1 mt-1 sm:mt-0 sm:ml-2 transition">About</a>
+  </div>
+</header>
