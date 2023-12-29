@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   get "/privacy", to: "pages#privacy"
 
   resources :expenses
+
+  namespace :api, defaults: { format: :json } do
+    get "/hello", to: "hello#world"
+  end
 end
