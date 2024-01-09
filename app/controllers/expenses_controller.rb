@@ -5,7 +5,14 @@ class ExpensesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @expenses = user_signed_in? ? current_user.expenses.order(datetime: :desc, created_at: :desc) : Expense.none
+    start_date = params[:start_date].present? ? Date.parse(params[:start_date]) : Date.today.at_beginning_of_month
+    end_date = params[:end_date].present? ? Date.parse(params[:end_date]) : Date.today.at_end_of_month
+    
+    if user_signed_in?
+      @expenses = current_user.expenses.where(datetime: start_date..end_date).order(datetime: :desc, created_at: :desc)
+    else
+      @expenses = Expense.none
+    end
   end
 
   def new
