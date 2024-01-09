@@ -1,3 +1,19 @@
+<div class="filter-section mt-4">
+  <%= form_tag(expenses_path, method: "get", class: "flex flex-wrap items-center") do %>
+    <div class="flex items-center">
+      <%= label_tag :start_date, "Start Date:", class: "mr-2" %>
+      <%= date_field_tag :start_date, params[:start_date] || Date.today.at_beginning_of_month, class: "border rounded px-2 py-1" %>
+    </div>
+    
+    <div class="flex items-center">
+      <%= label_tag :end_date, "End Date:", class: "mr-2" %>
+      <%= date_field_tag :end_date, params[:end_date] || Date.today.at_end_of_month, class: "border rounded px-2 py-1" %>
+    </div>
+    
+    <%= submit_tag "Filter", class: "ml-2 p-1 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded cursor-pointer transition" %>
+  <% end %>
+</div>
+
 <div class="mt-4 mb-2 overflow-x-auto">
   <table class="border-collapse border border-gray-300">
     <thead>
