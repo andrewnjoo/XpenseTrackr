@@ -6,7 +6,7 @@
     </div>
     
     <div class="flex items-center">
-      <%= label_tag :end_date, "End Date:", class: "mr-2" %>
+      <%= label_tag :end_date, "End Date:", class: "mr-2 ml-2" %>
       <%= date_field_tag :end_date, params[:end_date] || Date.today.at_end_of_month, class: "border rounded px-2 py-1" %>
     </div>
     
