@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "expenses#index"
+
+  authenticated(:user) do
+    get "/", to: "expenses#index"
+  end
+
+  root "pages#landing"
 
   get "/articles", to: "articles#index"
 
